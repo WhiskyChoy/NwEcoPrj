@@ -30,10 +30,10 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           working_directory: ./${{ env.path-master }}/${{ env.report-working-directory }}
-          root_file: ${{ root-file-name }}.tex
+          root_file: ${{ env.root-file-name }}.tex
       - name: copy pdf file to data directory
         run: |
-          cp ./${{ env.path-master }}/${{ env.report-working-directory }}/${{ root-file-name }}.pdf ./${{ env.path-gh-pages }}/${{ root-file-name }}.pdf
+          cp ./${{ env.path-master }}/${{ env.report-working-directory }}/${{ env.root-file-name }}.pdf ./${{ env.path-gh-pages }}/${{ env.root-file-name }}.pdf
       - uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PAGE_TOKEN }}
