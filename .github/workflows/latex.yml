@@ -23,5 +23,4 @@ jobs:
           root_file: proposal.tex
       - name: check file
         run: |
-          cd ${{ env.working-directory }}
-          ls -l
+          ls -rl | grep *.pdf
