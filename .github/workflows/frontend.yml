@@ -3,8 +3,7 @@ name: build and deploy frontend
 on:
   push:
     paths:
-    - '!opt-*'
-    - '**'
+    - 'demo/**'
     branches:
     - master
 
