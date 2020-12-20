@@ -25,16 +25,29 @@
 
 import GlobeChart from "@/components/GlobeChart";
 import GlobeTotalChart from "@/components/GlobeTotalChart";
+
+function componentLoaded(owner, componentName, interval = 500, timeout = 8000) {
+  return new Promise(resolve => {
+    const currentTime = Date.now();
+    const handle = setInterval(() => {
+      if (owner[componentName] || Date.now() - currentTime >= timeout) {
+        resolve(owner[componentName]);
+        clearInterval(handle);
+      }
+    }, interval)
+  })
+}
+
 export default {
   name: 'App',
   components: {
     GlobeTotalChart,
     GlobeChart
   },
-  methods:{
-    getDoms(...refs){
+  methods: {
+    getDoms(...refs) {
       let result = [];
-      for(let ref of refs){
+      for (let ref of refs) {
         result.push(this.$refs[ref])
       }
       return result
@@ -42,10 +55,19 @@ export default {
   },
   async mounted() {
     await this.$nextTick()
-    if(!this.$mathjax.isMathjaxConfig){//判断是否初始配置，若无则配置。
+    const res = await componentLoaded(this, '$mathjax')
+    if (!res) {
+      this.$message({
+        message: 'Latex Compiler Not Loaded',
+        type: 'warning',
+        duration: 1500
+      });
+      return;
+    }
+    if (!this.$mathjax.isMathjaxConfig) {//判断是否初始配置，若无则配置。
       this.$mathjax.initMathjaxConfig();
     }
-    this.$mathjax.MathQueue(this.getDoms('introduction','illustration','future_work'));//传入组件id，让组件被MathJax渲染
+    this.$mathjax.MathQueue(this.getDoms('introduction', 'illustration', 'future_work'));//传入组件id，让组件被MathJax渲染
   }
 }
 </script>
@@ -63,7 +85,7 @@ export default {
   align-items: center;
 }
 
-body{
+body {
   margin: 0
 }
 
@@ -71,16 +93,17 @@ body{
 .mjx-chtml {
   outline: 0;
 }
+
 .MJXc-display {
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-.global-total-chart{
+.global-total-chart {
   margin-top: 1rem;
 }
 
-.title{
+.title {
   width: 100%;
   background-color: white;
   position: sticky;
@@ -88,11 +111,11 @@ body{
   z-index: 100;
 }
 
-.subtitle{
+.subtitle {
   margin-top: 0;
 }
 
-.section{
+.section {
   max-width: 1000px;
   width: 70%;
   min-width: 850px;
@@ -101,21 +124,21 @@ body{
   margin-top: 1rem;
 }
 
-.section_title{
+.section_title {
   font-weight: bolder;
   font-size: x-large;
   border-bottom: black thin solid;
 }
 
-.section_content{
+.section_content {
   font-size: large;
   line-height: 150%;
   text-align: justify;
   margin-top: 0.5rem;
 }
 
-.references{
-  color: rgb(100,100,100);
+.references {
+  color: rgb(100, 100, 100);
 }
 
 </style>

@@ -21,6 +21,7 @@ jobs:
         with:
           working_directory: ${{ env.working-directory }}
           root_file: proposal.tex
-      - name: check file
-        run: |
-          ls -rl | grep *.pdf
+      - uses: actions/upload-artifact@v2
+        with:
+          name: PDF
+          path: main.pdf
