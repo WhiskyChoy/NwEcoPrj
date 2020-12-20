@@ -15,7 +15,7 @@ jobs:
       path-master: master
       path-gh-pages: gh-pages
       report-working-directory: report
-      root-file-name: proposal
+      root-file-name: report
     steps:
       - name: Set up master repository
         uses: actions/checkout@v2

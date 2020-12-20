@@ -2,6 +2,13 @@
   div#app
     h1.title Dynamic Aviation Network Under Pandemic
     h2.subtitle A Demo For Course CIE6036
+    div.corner-button-group
+      a(title="preview the report(.pdf)" href="/report.pdf"  download target="__blank")
+        AdobeAcrobatReaderIcon
+      a(title="download the report(.pdf)" href="/report.pdf" target="__blank")
+        AdobeIcon
+      a(title="visit on Github" href="https://github.com/WhiskyChoy/NwEcoPrj" target="__blank")
+        GitHubIcon
     div.section
       div.section_title INTRODUCTION
       div.section_content(ref="introduction") Inspired by the fusing command from civil aviation, the decision making of dynamic airline system takes a more essential role in current situation. After we propose a new decision making model on airline capacity and solve a constrained optimization problem, we obtain empirical experiment results. To better illustrate the relationship between decision making with different #[strong dates/cities/$\epsilon$/$T$], we now apply echarts to our Dynamic Airline System in 3D.
@@ -25,6 +32,7 @@
 
 import GlobeChart from "@/components/GlobeChart";
 import GlobeTotalChart from "@/components/GlobeTotalChart";
+import { AdobeAcrobatReaderIcon, AdobeIcon, GitHubIcon} from 'vue-simple-icons';
 
 function componentLoaded(owner, componentName, interval = 500, timeout = 8000) {
   return new Promise(resolve => {
@@ -42,7 +50,10 @@ export default {
   name: 'App',
   components: {
     GlobeTotalChart,
-    GlobeChart
+    GlobeChart,
+    AdobeAcrobatReaderIcon,
+    AdobeIcon,
+    GitHubIcon
   },
   methods: {
     getDoms(...refs) {
@@ -72,7 +83,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -113,6 +124,21 @@ body {
 
 .subtitle {
   margin-top: 0;
+}
+
+.corner-button-group{
+  position: fixed;
+  right: 0;
+  top: 0;
+  * {
+    margin: .5rem .5rem .5rem 0;
+    cursor: pointer;
+  }
+
+  * svg:hover {
+    transform: scale(1.5);
+    transition-duration: .3s;
+  }
 }
 
 .section {
