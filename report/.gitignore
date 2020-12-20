@@ -22,4 +22,5 @@
 **/*.fdb_latexmk
 **/*.synctex.gz
 **/*.run.xml
+**/*-converted-to.pdf
 /*.pdf
