@@ -11,10 +11,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./demo
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        path: demo
     - name: Use Node.js 10.x
       uses: actions/setup-node@v1
       with:
@@ -27,7 +28,6 @@ jobs:
       working-directory: ${{ env.working-directory }}
     - name: copy 404.html
       run: |
-        ls .
         cd dist
         cp index.html 404.html
     - name: deploy
