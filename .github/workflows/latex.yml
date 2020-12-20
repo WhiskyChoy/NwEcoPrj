@@ -3,6 +3,7 @@ name: compile the latex file
 on:
   push:
     paths:
+    - '.github/workflows/**'
     - 'report/**'
     branches:
     - master
