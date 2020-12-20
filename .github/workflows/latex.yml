@@ -12,20 +12,30 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./report
+      path-master: master
+      path-gh-pages: gh-pages
+      report-working-directory: report
+      root-file-name: proposal
     steps:
-      - name: Set up Git repository
+      - name: Set up master repository
         uses: actions/checkout@v2
+        with:
+          path: ${{ env.path-master }}
+      - name: Set up gh-pages repository
+        uses: actions/checkout@v2
+        with:
+          repository: gh-pages
+          path: ${{ env.path-gh-pages }}
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          working_directory: ${{ env.working-directory }}
-          root_file: proposal.tex
-      - name: ls
+          working_directory: ./${{ env.path-master }}/${{ env.report-working-directory }}
+          root_file: ${{ root-file-name }}.tex
+      - name: copy pdf file to data directory
         run: |
-          ls .
-          ls ${{ env.working-directory }}
-      - uses: actions/upload-artifact@v2
+          cp ./${{ env.path-master }}/${{ env.report-working-directory }}/${{ root-file-name }}.pdf ./${{ env.path-gh-pages }}/${{ root-file-name }}.pdf
+      - uses: peaceiris/actions-gh-pages@v3
         with:
-          name: PDF
-          path: proposal.pdf
+          personal_token: ${{ secrets.PAGE_TOKEN }}
+          publish_dir: ./${{ env.path-gh-pages }}
+          force_orphan: true
