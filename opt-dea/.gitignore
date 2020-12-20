@@ -1,0 +1,6 @@
+/__pycache__/
+/result/
+/referenceObjV/
+/output/
+result*.svg
+*.log

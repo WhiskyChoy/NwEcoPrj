@@ -1,0 +1,37 @@
+name: build and deploy frontend
+
+on:
+  push:
+    paths:
+    - '!opt-*'
+    - '**'
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./network-economics-demo
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: "10.x"
+    - name: install using npm install
+      run: npm install
+      working-directory: ${{ env.working-directory }}
+    - name: build
+      run: npm run build_github
+      working-directory: ${{ env.working-directory }}
+    - name: copy 404.html
+      run: |
+        cd dist
+        cp index.html 404.html
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        personal_token: ${{ secrets.PAGE_TOKEN }}
+        publish_dir: ./dist
+        force_orphan: true

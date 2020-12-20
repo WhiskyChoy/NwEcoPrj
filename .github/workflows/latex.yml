@@ -1,0 +1,22 @@
+name: compile the latex file
+
+on:
+  push:
+    paths:
+    - '!opt-*'
+    - '**'
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./report
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: proposal.tex
