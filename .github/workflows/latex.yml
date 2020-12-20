@@ -20,11 +20,12 @@ jobs:
       - name: Set up master repository
         uses: actions/checkout@v2
         with:
+          ref: master
           path: ${{ env.path-master }}
       - name: Set up gh-pages repository
         uses: actions/checkout@v2
         with:
-          repository: gh-pages
+          ref: gh-pages
           path: ${{ env.path-gh-pages }}
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
