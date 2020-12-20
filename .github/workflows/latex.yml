@@ -21,7 +21,11 @@ jobs:
         with:
           working_directory: ${{ env.working-directory }}
           root_file: proposal.tex
+      - name: ls
+      run: |
+        ls .
+        ls ${{ env.working-directory }}
       - uses: actions/upload-artifact@v2
         with:
           name: PDF
-          path: main.pdf
+          path: proposal.pdf
