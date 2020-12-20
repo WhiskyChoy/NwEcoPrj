@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  deploy:
+  compile:
     runs-on: ubuntu-latest
     env:
       working-directory: ./report
@@ -21,3 +21,7 @@ jobs:
         with:
           working_directory: ${{ env.working-directory }}
           root_file: proposal.tex
+      - name: check file
+        run: |
+          cd ${{ env.working-directory }}
+          ls -l
