@@ -3,7 +3,7 @@ name: compile the latex file
 on:
   push:
     paths:
-    - '.github/workflows/**'
+    - '.github/workflows/latex.yml'
     - 'report/**'
     branches:
     - master
@@ -22,9 +22,9 @@ jobs:
           working_directory: ${{ env.working-directory }}
           root_file: proposal.tex
       - name: ls
-      run: |
-        ls .
-        ls ${{ env.working-directory }}
+        run: |
+          ls .
+          ls ${{ env.working-directory }}
       - uses: actions/upload-artifact@v2
         with:
           name: PDF
