@@ -1,21 +1,18 @@
 \section{Future Work}
 
-\subsection{Solving Potential Problems}
+\subsection{For the Model: Solving Potential Problems}
 
-\subsubsection{For the Model}
+% \subsubsection{For the Model}
 
 \begin{enumerate}
-    \item \textbf{$C_{ij}$ to/between High Risk Cities} 
-    
-    In our current model, we can describe the decision for the airline capicity from citis with high infection risk to those rather safer, but when deciding the airline capacity to or between high risk cities, it might require further consideration. In such conditions, our current model still keep some number of airlines, and it's up to the potential customers to decide whether to utilize such opportunity and go to high risk areas or not. 
-    
-    It make sense considering the demand of specific customers, but when considering the public health, the conclusion could be different. 
-    \item \textbf{Other Representation of $S_{i}$:}
+    \item \textbf{$C_{ij}$ to/between High Risk Cities} In our current model, we can describe the decision for the airline capicity from citis with high infection risk to those rather safer, but when deciding the airline capacity to or between high risk cities, it might require further consideration. In such conditions, our current model still keep some number of airlines, and it's up to the potential customers to decide whether to utilize such opportunity and go to high risk areas or not. It make sense considering the demand of specific customers, but when considering the public health, the conclusion could be different. 
+    \item \textbf{Other Representation of $S_{i}$} We use $I_i-E_i$ to represent $S_i$, and it would help to show the severity within a given time period even if $E_i$ is larger: although $S_i$ would be negative, our model can accept such input about severity and it would hold the meaning that the condition is getting better. However, under traditional viewpoint, we could also define $S_i$ as the number of active cases at a given time point, since such cases could still be infectious and should be taken into consideration.
 \end{enumerate}
 
-\subsubsection{For the Data}
+% \subsubsection{For the Data}
 
-\subsection{Adopting Further Promotion}
+\subsection{For the Data: Adopting Further Promotion}
+To some extant, our experimental results shares the same trend of whether to maintain current operational level or to cut flights between two targeted city pairs. Beyond "Five One" policy, CAAC also introduces "Circuit Breaker" and "Reward" mechanism for airlines based on passenger nucleic acid test results upon arrival in order to contain the number of imported cases of COVID-19. As an incentive, carriers will be allowed to increase the number of international flights to two per week on one route if the number of passengers who have a positive nucleic acid test on their flights stands at zero for three consecutive weeks. Since Dec.$16^{\rm th}$, the "circuit breaker" mechanism has been upgraded that the airline must suspend the operation of the route for two weeks if the number of passengers who test positive for the coronavirus reaches five. Note that these dynamic updated policies will also require our network optimization model to show more robust and resonable results in combination with more demanding data. With this regard, we will further analyze how to promote our constructed model in compliance with the newly operational policy.
 
 
 
