@@ -145,8 +145,24 @@ According to our proposed model, one constraint except satisfying the maximum ai
 \end{figure}
 
 
+\subsubsection{Convergence Results under Different $(\epsilon, T)$}
 
+\begin{figure}[H]
+    \centering
+    \subfigure[$(\epsilon=0.6, T=500)$]{
+        \includegraphics[width=0.46\columnwidth]{pic/convergence_4-16_n10_ep0.6_T500.png}
+    }
+    % \subfigure[$(\epsilon=0.6, T=750)$]{
+    %     \includegraphics[width=0.46\columnwidth]{pic/convergence_4-16_n10_ep0.6_T750.png}
+    % }
+    \subfigure[$(\epsilon=0.6, T=1000)$]{
+        \includegraphics[width=0.46\columnwidth]{pic/convergence_4-16_n10_ep0.6_T1000.png}
+    }
+    \caption{Convergence Results of Differential Evolution Algorithm under Different $(\epsilon, T)$ on Apr. $16^{\rm th}$ with $n=10$}
+    \label{fig:Convergence}
+\end{figure}
 
+As is shown in Figure 6, we can discover that for the larger $T$ with more relaxtion constraints, the optimal value could be obtained with less convergence steps.
 
 
 % \subsubsection{Relationship between decision making $c_{ij}^* / c_{ij}^{max}$ and the airline capacity $c_{ij}^{max}$}

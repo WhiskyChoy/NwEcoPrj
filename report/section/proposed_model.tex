@@ -77,4 +77,7 @@ after cutting, there is no path from $s$ to $t$ (eg. capital). The cost of remov
 
 \subsection{Algorithm}
 
+To solve this integer optimization problem with linear constraints, we firstly try to use CPLEX solver. Unfortunately, the CPLEX solver has some defects to solve the integer optimization problem and always gives the solution full of 0. Then we apply the Differential Evolution Algorithm using the \emph{GeatPy}\cite{geatpy} toolkit to solve it successfully. 
 
+Specifically, Differential Evolution (DE) is a powerful yet simple
+evolutionary algorithm for optimizing real-valued, multimodal functions. Function parameters are encoded as floating-point variables and mutated with a simple arithmetic operation. During mutation, a variable-length, one-way crossover operation splices perturbed best-so-far parameter values into existing population vectors. As for results, DE's performance could be competitive with other fast and converged methods.
