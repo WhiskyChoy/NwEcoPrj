@@ -4,11 +4,11 @@
     h2.subtitle A Demo For Course CIE6036
     div.corner-button-group
       a(title="preview the report(.pdf)" href="/report.pdf"  download target="__blank")
-        AdobeAcrobatReaderIcon
+        AdobeAcrobatReaderIcon(v-noTitle)
       a(title="download the report(.pdf)" href="/report.pdf" target="__blank")
-        AdobeIcon
+        AdobeIcon(v-noTitle)
       a(title="visit on Github" href="https://github.com/WhiskyChoy/NwEcoPrj" target="__blank")
-        GitHubIcon
+        GitHubIcon(v-noTitle)
     div.section
       div.section_title INTRODUCTION
       div.section_content(ref="introduction") Inspired by the fusing command from civil aviation, the decision making of dynamic airline system takes a more essential role in current situation. After we propose a new decision making model on airline capacity and solve a constrained optimization problem, we obtain empirical experiment results. To better illustrate the relationship between decision making with different #[strong dates/cities/$\epsilon$/$T$], we now apply echarts to our Dynamic Airline System in 3D.
