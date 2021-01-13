@@ -36,3 +36,35 @@ jobs:
         personal_token: ${{ secrets.PAGE_TOKEN }}
         publish_dir: ${{ env.working-directory }}/dist
         force_orphan: true
+  compile:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      path-master: master
+      path-gh-pages: gh-pages
+      report-working-directory: report
+      root-file-name: report
+    steps:
+      - name: Set up master repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          path: ${{ env.path-master }}
+      - name: Set up gh-pages repository
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+          path: ${{ env.path-gh-pages }}
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: ./${{ env.path-master }}/${{ env.report-working-directory }}
+          root_file: ${{ env.root-file-name }}.tex
+      - name: copy pdf file to data directory
+        run: |
+          cp ./${{ env.path-master }}/${{ env.report-working-directory }}/${{ env.root-file-name }}.pdf ./${{ env.path-gh-pages }}/${{ env.root-file-name }}.pdf
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.PAGE_TOKEN }}
+          publish_dir: ./${{ env.path-gh-pages }}
+          force_orphan: true
