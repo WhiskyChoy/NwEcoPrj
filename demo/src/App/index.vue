@@ -3,9 +3,9 @@
     h1.title Dynamic Aviation Network Under Pandemic
     h2.subtitle A Demo For Course CIE6036
     div.corner-button-group
-      a(title="preview the report(.pdf)" href="/report.pdf"  download target="__blank")
+      a(title="download the report(.pdf)" href="/report.pdf"  download target="__blank")
         AdobeAcrobatReaderIcon(v-noTitle)
-      a(title="download the report(.pdf)" href="/report.pdf" target="__blank")
+      a(title="preview the report(.pdf)" href="/report.pdf" target="__blank")
         AdobeIcon(v-noTitle)
       a(title="visit on Github" href="https://github.com/WhiskyChoy/NwEcoPrj" target="__blank")
         GitHubIcon(v-noTitle)
